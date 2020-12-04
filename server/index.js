@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
@@ -26,6 +26,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => res.send("Hello World!"));
+
+app.get("/api/hello", (req, res) => res.send("Hello World~"));
 
 app.post("/api/users/register", (req, res) => {
   // 회원가입 할때 필요한 정보들을 client에 가져오면 그것들은 데이터 베이스에 넣어줌
@@ -92,6 +94,8 @@ app.get("/api/users/logout", auth, (req, res) => {
     });
   });
 });
+
+const port = 5000;
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
